@@ -11,7 +11,6 @@ from libqtile.config import (
 )
 from libqtile.lazy import lazy
 from libqtile import qtile
-from colors import *
 
 #  _   _       _   _                  
 # | | | | ___ | |_| | _____ _   _ ___ 
@@ -22,7 +21,6 @@ from colors import *
 
 mod = "mod4"
 terminal = "kitty"
-current_theme = tokyo_night
 
 keys = [
     
@@ -70,9 +68,8 @@ keys = [
 groups = [
     Group(
         name="1",
-        label="",
+        label="",
         matches=[
-            Match(wm_class=["firefox"]),
         ],
         layout="columns",
     ),
@@ -83,7 +80,6 @@ groups = [
             Match(wm_class=["nvim"]),
             Match(wm_class=["jetbrains-pycharm"]),
             Match(wm_class=["jetbrains-clion"]),
-
         ],
         layout="columns",
     ),
@@ -167,8 +163,8 @@ def init_layout_theme():
     return {
         "margin": 6,
         "border_width": 1,
-        "border_focus": select_color(current_theme, "color3"),
-        "border_normal": select_color(current_theme, "color8"), 
+        "border_focus": "E0AF68",
+        "border_normal": "#414868",
     }
 
 
@@ -177,16 +173,15 @@ layout_theme = init_layout_theme()
 layouts = [
     layout.Columns(**layout_theme),
     layout.Max(**layout_theme),
-# Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
-    layout.MonadWide(),
+    # layout.MonadTall(),
+    # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    layout.TreeTab(),
-    layout.VerticalTile(),
+    # layout.TreeTab(),
+    # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
@@ -202,15 +197,15 @@ def init_group_box_settings():
     return {
         "fontsize": 20,
         "borderwidth": 4,
-        "active": select_color(current_theme, "fg"),
-        "inactive": select_color(current_theme, "color8"),
-        "this_current_screen_border": select_color(current_theme, "color3"),
+        "active": "#c0caf5",
+        "inactive": "#414868",
+        "this_current_screen_border": "#e0af68",
         "highlight_method": "text",
         "disable_drag": True,
         "urgent_alert_method": "text",
-        "urgent_border": current_theme["color1"],
-        "urgent_text": current_theme["color1"],
-        "visible_groups": ["1", "2", "3", "4", "5", "6"]
+        "urgent_border": "#f7768e",
+        "urgent_text": "#f7768e",
+        "visible_groups": ["1", "2", "3", "4", "5", "6"],
     }
 
 
@@ -222,7 +217,7 @@ screens = [
             [
                 widget.TextBox(
                     text=" ",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=12,
                 ),
@@ -233,7 +228,7 @@ screens = [
                 widget.Prompt(),
                 widget.Spacer(),
                 widget.WindowName(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     width=bar.CALCULATED,
                     empty_group_string="Desktop",
                     max_chars=130,
@@ -245,12 +240,12 @@ screens = [
                     linewidth=0,
                 ),
                 widget.CurrentLayoutIcon(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     scale=.6,
                     padding=0,
                 ),
                 widget.CurrentLayout(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                 ),
                 widget.Sep(
                     padding=15,
@@ -258,14 +253,14 @@ screens = [
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Wlan(
                     interface="wlp7s0u1",
                     format="{essid}",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(
                         os.path.expanduser("~/.config/qtile/rofi-wifi-menu.sh")
                     )},
@@ -276,12 +271,12 @@ screens = [
                 ),
                 widget.TextBox(
                     text="墳 ",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.PulseVolume(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     limit_max_volume=True,
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty pacmixer")},
                 ),
@@ -291,12 +286,12 @@ screens = [
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Clock(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     format="%a, %b %d",
                 ),
                 widget.Sep(
@@ -305,18 +300,18 @@ screens = [
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Clock(
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     format="%I:%M %p",
                 ),
 
                 widget.TextBox(
                     text="",
-                    foreground=select_color(current_theme, "fg"),
+                    foreground="#c0caf5",
                     fontsize=16,
                     padding=16,
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(
@@ -324,7 +319,7 @@ screens = [
                     )},
                 ),
             ],
-            background=select_color(current_theme, "bg"),
+            background="#24283b",
             size=24,
         ),
     ),
@@ -352,6 +347,19 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
+        Match(wm_class='confirm'),
+        Match(wm_class='dialog'),
+        Match(wm_class='download'),
+        Match(wm_class='error'),
+        Match(wm_class='file_progress'),
+        Match(wm_class='notification'),
+        Match(wm_class='splash'),
+        Match(wm_class='toolbar'),
+        Match(wm_class='confirmreset'),
+        Match(wm_class='makebranch'),
+        Match(wm_class='maketag'),
+        Match(title='branchdialog'),
+        Match(title='pinentry'),
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
