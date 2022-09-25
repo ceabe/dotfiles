@@ -163,8 +163,8 @@ def init_layout_theme():
     return {
         "margin": 6,
         "border_width": 1,
-        "border_focus": "E0AF68",
-        "border_normal": "#414868",
+        "border_focus": "#d79921",
+        "border_normal": "#3c3836",
     }
 
 
@@ -197,14 +197,14 @@ def init_group_box_settings():
     return {
         "fontsize": 20,
         "borderwidth": 4,
-        "active": "#c0caf5",
-        "inactive": "#414868",
-        "this_current_screen_border": "#e0af68",
+        "active": "#ebdbb2",
+        "inactive": "#928374",
+        "this_current_screen_border": "#b8bb26",
         "highlight_method": "text",
         "disable_drag": True,
         "urgent_alert_method": "text",
-        "urgent_border": "#f7768e",
-        "urgent_text": "#f7768e",
+        "urgent_border": "#cc241d",
+        "urgent_text": "#cc241d",
         "visible_groups": ["1", "2", "3", "4", "5", "6"],
     }
 
@@ -217,7 +217,7 @@ screens = [
             [
                 widget.TextBox(
                     text=" ",
-                    foreground="#c0caf5",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=12,
                 ),
@@ -228,7 +228,7 @@ screens = [
                 widget.Prompt(),
                 widget.Spacer(),
                 widget.WindowName(
-                    foreground="#c0caf5",
+                    foreground="#ebdbb2",
                     width=bar.CALCULATED,
                     empty_group_string="Desktop",
                     max_chars=130,
@@ -239,79 +239,121 @@ screens = [
                     padding=15,
                     linewidth=0,
                 ),
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#282828",
+                    foreground="#cc241d",
+                ),
                 widget.CurrentLayoutIcon(
-                    foreground="#c0caf5",
+                    background="#cc241d",
+                    foreground="#ebdbb2",
                     scale=.6,
                     padding=0,
                 ),
                 widget.CurrentLayout(
-                    foreground="#c0caf5",
+                    background="#cc241d",
+                    foreground="#ebdbb2",
                 ),
-                widget.Sep(
-                    padding=15,
-                    linewidth=0,
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#cc241d",
+                    foreground="#98971A",
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground="#c0caf5",
+                    background="#98971A",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Wlan(
                     interface="wlp7s0u1",
                     format="{essid}",
-                    foreground="#c0caf5",
+                    background="#98971A",
+                    foreground="#ebdbb2",
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(
                         os.path.expanduser("~/.config/qtile/rofi-wifi-menu.sh")
                     )},
                 ),
-                widget.Sep(
-                    padding=15,
-                    linewidth=0,
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#98971A",
+                    foreground="#D79921",
                 ),
                 widget.TextBox(
                     text="墳 ",
-                    foreground="#c0caf5",
+                    background="#D79921",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.PulseVolume(
-                    foreground="#c0caf5",
+                    background="#D79921",
+                    foreground="#ebdbb2",
                     limit_max_volume=True,
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty pacmixer")},
                 ),
-                widget.Sep(
-                    padding=15,
-                    linewidth=0,
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#D79921",
+                    foreground="#458588",
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground="#c0caf5",
+                    background="#458588",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Clock(
-                    foreground="#c0caf5",
+                    background="#458588",
+                    foreground="#ebdbb2",
                     format="%a, %b %d",
                 ),
-                widget.Sep(
-                    padding=15,
-                    linewidth=0,
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#458588",
+                    foreground="#B16286",
                 ),
                 widget.TextBox(
                     text=" ",
-                    foreground="#c0caf5",
+                    background="#B16286",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=0,
                 ),
                 widget.Clock(
-                    foreground="#c0caf5",
+                    background="#B16286",
+                    foreground="#ebdbb2",
                     format="%I:%M %p",
                 ),
-
+                widget.TextBox(
+                    text="\ue0be",
+                    font="Inconsolata for powerline",
+                    fontsize="33",
+                    padding=0,
+                    background="#B16286",
+                    foreground="#689D6A",
+                ),
                 widget.TextBox(
                     text="",
-                    foreground="#c0caf5",
+                    background="#689D6A",
+                    foreground="#ebdbb2",
                     fontsize=16,
                     padding=16,
                     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(
@@ -319,7 +361,7 @@ screens = [
                     )},
                 ),
             ],
-            background="#24283b",
+            background="#282828",
             size=24,
         ),
     ),
@@ -355,11 +397,6 @@ floating_layout = layout.Floating(
         Match(wm_class='notification'),
         Match(wm_class='splash'),
         Match(wm_class='toolbar'),
-        Match(wm_class='confirmreset'),
-        Match(wm_class='makebranch'),
-        Match(wm_class='maketag'),
-        Match(title='branchdialog'),
-        Match(title='pinentry'),
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
